@@ -15,16 +15,20 @@ export class Util {
      * @memberof Util
      */
 
-    public dateProvider(): string {
+    public dateProvider(pIsFileName: boolean = false): string {
+		
         let today: any = new Date();
 		let hour: number = today.getHours();
 		let minutes: number = today.getMinutes();
 		let seconds: number = today.getSeconds();
-		let time = hour + ":" + minutes + ":" + seconds
-		let dd = String(today.getDate()).padStart(2, "0");
-		let mm = String(today.getMonth() + 1).padStart(2, "0");
+		let time: string = "";
+		let dd: string = String(today.getDate()).padStart(2, "0");
+		let mm: string = String(today.getMonth() + 1).padStart(2, "0");
 		let yyyy = today.getFullYear();
-		today = `${dd}/${mm}/${yyyy}_${time}`;
+		
+		pIsFileName ? time = `${hour}_${minutes}_${seconds}` : time = `${hour + ":" + minutes + ":" + seconds}`
+		pIsFileName ? today = `${dd}-${mm}-${yyyy}-${time}`: today = `${dd}/${mm}/${yyyy}_${time}`;
+		
         return today;
     }
 
