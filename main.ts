@@ -4,5 +4,5 @@ import { Downloader } from "./class/downloader";
 let downloader = new Downloader();
 
 cron.schedule("* * * * *", async () => {
-  downloader.run()
+  await downloader.run()
 });

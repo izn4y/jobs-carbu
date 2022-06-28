@@ -21,7 +21,7 @@ export class Downloader {
   }
 
 
-public run(){
+public async run(){
     this.download()
   }
   
